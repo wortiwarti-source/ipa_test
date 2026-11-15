@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#10131b">
+    <meta name="description" content="A secure, clear workspace for moving and restoring files.">
+    <title>MOVE &amp; RESTORE</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="login-screen" class="login-screen" aria-labelledby="welcome-title">
+        <header class="brand">
+          <div class="brand-mark" aria-hidden="true"><span>M</span><span>R</span></div>
+          <span class="brand-name">MOVE <i>&amp;</i> RESTORE</span>
+        </header>
+
+        <div class="login-content">
+          <p class="eyebrow">YOUR FILES, IN THE RIGHT PLACE</p>
+          <h1 id="welcome-title">Move with<br>confidence.</h1>
+          <p class="intro">A simple, transparent space to move and restore your files.</p>
+          <form id="login-form" class="login-form">
+            <label for="access-key">ACCESS KEY</label>
+            <input id="access-key" name="key" type="text" autocomplete="off" placeholder="Enter your key">
+            <button class="button button-primary enter-button" type="submit">
+              <span>ENTER</span><span aria-hidden="true">→</span>
+            </button>
+          </form>
+          <p class="subtle-note">Key access will be configured later.</p>
+        </div>
+        <footer class="page-footer">MOVE &amp; RESTORE <span>·</span> PRIVATE FILE WORKSPACE</footer>
+      </section>
+
+      <section id="dashboard-screen" class="dashboard-screen" aria-labelledby="dashboard-title" hidden>
+        <header class="topbar">
+          <a class="brand brand-link" href="#" aria-label="MOVE & RESTORE home">
+            <div class="brand-mark" aria-hidden="true"><span>M</span><span>R</span></div>
+            <span class="brand-name">MOVE <i>&amp;</i> RESTORE</span>
+          </a>
+          <button id="back-button" class="text-button" type="button">← <span>Sign out</span></button>
+        </header>
+
+        <div class="dashboard-content">
+          <div class="dashboard-heading">
+            <p class="eyebrow">FILE WORKSPACE</p>
+            <h1 id="dashboard-title">Operations</h1>
+            <p>Review access and file status before each operation.</p>
+          </div>
+
+          <section class="operation-card" aria-label="File operations">
+            <div class="operation-actions">
+              <button id="move-button" class="button operation-button move-button" type="button">
+                <span class="action-icon" aria-hidden="true">↑</span>
+                <span class="action-copy"><strong>MOVE</strong><small>Place the mode file</small></span>
+                <span class="action-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button id="restore-button" class="button operation-button restore-button" type="button">
+                <span class="action-icon" aria-hidden="true">↺</span>
+                <span class="action-copy"><strong>RESTORE</strong><small>Restore the original file</small></span>
+                <span class="action-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            <div class="status-section">
+              <div class="section-title"><span>OPERATION STATUS</span><span id="operation-indicator" class="status-indicator" aria-hidden="true"></span></div>
+              <p id="operation-status" class="status-message" role="status" aria-live="polite">Ready. Choose an operation to begin.</p>
+              <pre id="operation-details" class="operation-details" hidden></pre>
+            </div>
+
+            <div class="details-grid">
+              <section class="detail-block">
+                <div class="section-title">TARGET APPLICATION</div>
+                <p id="target-bundle" class="detail-value"></p>
+                <p class="detail-hint">Identifier only. iOS does not grant access to another app's sandbox.</p>
+              </section>
+              <section class="detail-block">
+                <div class="section-title">TARGET LOCATION</div>
+                <p id="target-path" class="detail-value detail-path"></p>
+                <p id="access-location" class="detail-hint">Native filesystem access is not available in this browser.</p>
+                <button id="choose-directory" class="text-button access-button" type="button" hidden>Choose an allowed folder</button>
+              </section>
+              <section class="detail-block file-status">
+                <div class="section-title">MODE FILE <span id="move-source-status" class="file-status-label">CHECKING</span></div>
+                <p class="detail-value">move.txt</p>
+                <p id="move-source-size" class="detail-hint">Checking bundled resource…</p>
+              </section>
+              <section class="detail-block file-status">
+                <div class="section-title">RESTORE FILE <span id="restore-source-status" class="file-status-label">CHECKING</span></div>
+                <p class="detail-value">restore.txt</p>
+                <p id="restore-source-size" class="detail-hint">Checking bundled resource…</p>
+              </section>
+            </div>
+          </section>
+          <p class="security-note"><span aria-hidden="true">◆</span> No access is attempted without an iOS-granted folder permission.</p>
+        </div>
+        <footer class="page-footer">MOVE &amp; RESTORE <span>·</span> FILE OPERATIONS ARE VERIFIED</footer>
+      </section>
+    </main>
+    <script src="target-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
